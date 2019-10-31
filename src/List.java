@@ -104,12 +104,9 @@ public class List<Type>
     // there should be no wrap-around
     public void Next()
     {
-        if(curr.getLink()  != null && curr.getLink().getLink() == null){
+        if(curr.getLink()  != null && curr.getLink().getLink() != null){
             curr.setLink(curr.getLink().getLink());
-        }else{
-            System.out.println("Next node not available.");
         }
-
     }
 
     // returns the location of the current element (or -1)

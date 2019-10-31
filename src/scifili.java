@@ -37,6 +37,17 @@ public class scifili {
         //Test Print for list replace with startup print
         System.out.println(liblist);
 
+        //Create Array
+        Book[] bookArray = Book.GenArray(liblist);
+
+        //Spacing
+        //System.out.println("\n\n\n\n\n\nSee Below\n\n\n\n\n\n");
+
+        //Test print array
+//        for(int j = 0; j <liblist.GetSize(); j ++){
+//            System.out.println(bookArray[j]);
+//        }
+
         //Main loop
         while(true){
             System.out.println("Welcome to library resource center, please select from the following options: quit");
@@ -50,6 +61,17 @@ public class scifili {
         }
 
     }
+    public void TitleSearch(Book[] bookarr){
+    }
+
+    public void AuthorSearch(Book[] bookarr){
+    }
+
+    public void AlphaSort(Book[] bookarr){
+
+    }
+
+
 }
 
 //Book class for storing data from text file
@@ -118,5 +140,15 @@ class Book{
         String printdata = "";
         printdata = printdata + this.GetTitle() + ", " + this.GetAuthor() + ", " + this.GetCheckedin() + ", " + this.GetPriority();
         return printdata;
+    }
+
+    public static Book[] GenArray(List<Book> lst){
+        Book[] tempArray = new Book[lst.GetSize()];
+        lst.First();
+        for(int i=0; i<lst.GetSize(); i++){
+            tempArray[i] = lst.GetValue();
+            lst.Next();
+        }
+        return tempArray;
     }
 }
