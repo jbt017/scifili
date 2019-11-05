@@ -84,7 +84,7 @@ public class scifili {
         while (flag) {
             flag = false;
             for (j = 0; j < bookarr.length - 1; j++) {
-                if (bookarr[j].GetTitle().compareToIgnoreCase(bookarr[j + 1].GetTitle()) > 0) {                                             // ascending sort
+                if (bookarr[j].GetTitle().compareToIgnoreCase(bookarr[j + 1].GetTitle()) > 0) {
                     temp = bookarr[j];
                     bookarr[j] = bookarr[j + 1];     // swapping
                     bookarr[j + 1] = temp;
@@ -104,7 +104,7 @@ public class scifili {
         while (flag) {
             flag = false;
             for (j = 0; j < bookarr.length - 1; j++) {
-                if (bookarr[j].GetAuthor().compareToIgnoreCase(bookarr[j + 1].GetAuthor()) > 0) {                                             // ascending sort
+                if (bookarr[j].GetAuthor().compareToIgnoreCase(bookarr[j + 1].GetAuthor()) > 0) {
                     temp = bookarr[j];
                     bookarr[j] = bookarr[j + 1];     // swapping
                     bookarr[j + 1] = temp;
@@ -127,6 +127,7 @@ public class scifili {
         return tempArray;
     }
 
+    //Print Array
     public static void PrintArray(Book[] arr){
         for(int j = 0; j <arr.length; j ++){
             System.out.println(arr[j]);
