@@ -39,14 +39,15 @@ public class scifili {
 
         //Create Array
         Book[] bookArray = Book.GenArray(liblist);
+        AlphaSort(bookArray);
 
         //Spacing
         //System.out.println("\n\n\n\n\n\nSee Below\n\n\n\n\n\n");
 
         //Test print array
-//        for(int j = 0; j <liblist.GetSize(); j ++){
-//            System.out.println(bookArray[j]);
-//        }
+        for(int j = 0; j <liblist.GetSize(); j ++){
+            System.out.println(bookArray[j]);
+        }
 
         //Main loop
         while(true){
@@ -67,7 +68,29 @@ public class scifili {
     public void AuthorSearch(Book[] bookarr){
     }
 
-    public void AlphaSort(Book[] bookarr){
+    public static void AlphaSort(Book[] bookarr){
+        int j;
+        boolean flag = true;  // will determine when the sort is finished
+        Book temp;
+
+        //algorithm from mathbits.com
+        while ( flag )
+        {
+            flag = false;
+            for ( j = 0;  j < bookarr.length - 1;  j++ )
+            {
+                if ( bookarr[ j ].GetTitle().compareToIgnoreCase(  bookarr[ j+1 ].GetTitle() ) > 0 )
+                {                                             // ascending sort
+                    temp =  bookarr[ j ];
+                    bookarr[ j ] = bookarr[ j+1 ];     // swapping
+                    bookarr[ j+1 ] = temp;
+                    flag = true;
+                }
+            }
+
+        }
+
+    public void AuthorSort(Book[] bookarr){
 
     }
 
@@ -142,7 +165,7 @@ class Book{
         return printdata;
     }
 
-    public static Book[] GenArray(List<Book> lst){
+    public Book[] GenArray(List<Book> lst){
         Book[] tempArray = new Book[lst.GetSize()];
         lst.First();
         for(int i=0; i<lst.GetSize(); i++){
