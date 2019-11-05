@@ -50,7 +50,7 @@ public class scifili {
         //Main loop
         while(true){
             System.out.println("Welcome to library resource center, please select from the following options:");
-            System.out.println("Sort by Title, Sort by Author, Quit.");
+            System.out.println("Sort by Title, Sort by Author, Search by Author, Search by Title, Quit.");
             input = rawinput.nextLine();
 
             if(input.equalsIgnoreCase("quit")){
@@ -62,6 +62,12 @@ public class scifili {
             }else if(input.equalsIgnoreCase("Sort by Title")){
                 AlphaSort(bookArray);
                 PrintArray(bookArray);
+            }else if(input.equalsIgnoreCase("Search by Author")){
+                System.out.println("Which author would you like to search for?");
+                input = rawinput.nextLine();
+                AuthorSearch(bookArray, input);
+            }else if(input.equalsIgnoreCase("Search by Title")){
+                System.out.println("To be implemented");
             }else{
                 System.out.println("Please enter one of the listed options");
             }
@@ -69,10 +75,26 @@ public class scifili {
         }
 
     }
-    public void TitleSearch(Book[] bookarr){
+    public static void TitleSearch(Book[] bookarr, String title){
+        int first = 0;
+        int last = bookarr.length;
+        int mid = bookarr.length / 2;
+        
     }
 
-    public void AuthorSearch(Book[] bookarr){
+    public static void AuthorSearch(Book[] bookarr, String author){
+        List<Book> temp = new List();
+        for (Book book : bookarr) {
+            String tmpauth = book.GetAuthor();
+            if (tmpauth.equalsIgnoreCase(author)) {
+                temp.InsertAfter(book);
+            }
+        }
+        if(temp.GetSize() == -1){
+            System.out.println("Author not found.");
+        }else{
+            System.out.println(temp);
+        }
     }
 
     public static void AlphaSort(Book[] bookarr) {
