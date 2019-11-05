@@ -38,7 +38,7 @@ public class scifili {
         System.out.println(liblist);
 
         //Create Array
-        Book[] bookArray = Book.GenArray(liblist);
+        Book[] bookArray = GenArray(liblist);
         AlphaSort(bookArray);
 
         //Spacing
@@ -68,104 +68,32 @@ public class scifili {
     public void AuthorSearch(Book[] bookarr){
     }
 
-    public static void AlphaSort(Book[] bookarr){
+    public static void AlphaSort(Book[] bookarr) {
         int j;
         boolean flag = true;  // will determine when the sort is finished
         Book temp;
 
         //algorithm from mathbits.com
-        while ( flag )
-        {
+        while (flag) {
             flag = false;
-            for ( j = 0;  j < bookarr.length - 1;  j++ )
-            {
-                if ( bookarr[ j ].GetTitle().compareToIgnoreCase(  bookarr[ j+1 ].GetTitle() ) > 0 )
-                {                                             // ascending sort
-                    temp =  bookarr[ j ];
-                    bookarr[ j ] = bookarr[ j+1 ];     // swapping
-                    bookarr[ j+1 ] = temp;
+            for (j = 0; j < bookarr.length - 1; j++) {
+                if (bookarr[j].GetTitle().compareToIgnoreCase(bookarr[j + 1].GetTitle()) > 0) {                                             // ascending sort
+                    temp = bookarr[j];
+                    bookarr[j] = bookarr[j + 1];     // swapping
+                    bookarr[j + 1] = temp;
                     flag = true;
                 }
             }
 
         }
+    }
 
     public void AuthorSort(Book[] bookarr){
 
     }
 
-
-}
-
-//Book class for storing data from text file
-class Book{
-    private String author;
-    private String title;
-    private int priority;
-    private int checkedin;
-
-    //Default Constructor
-    Book(){
-        this.priority = 0;
-        this.checkedin = 0;
-    }
-
-    //param constructor
-    Book(String auth, String title, int pri, int check){
-        this.author = auth;
-        this.title = title;
-        this.priority = pri;
-        this.checkedin = check;
-    }
-
-    //Get Author
-    public String GetAuthor(){
-        return this.author;
-    }
-
-    //Set Author
-    public void SetAuthor(String auth){
-        this.author = auth;
-    }
-
-    //Get Title
-    public String GetTitle(){
-        return this.title;
-    }
-
-    //Set Title
-    public void SetTitle(String title){
-        this.title = title;
-    }
-
-    //Get Priority
-    public int GetPriority(){
-        return this.priority;
-    }
-
-    //Set Priority
-    public void SetPriority(int pri){
-        this.priority = pri;
-    }
-
-    //Get Checked State
-    public int GetCheckedin(){
-        return this.checkedin;
-    }
-
-    //Set Checked State
-    public void SetCheckedin(int check){
-        this.checkedin = check;
-    }
-
-    //String override
-    public String toString(){
-        String printdata = "";
-        printdata = printdata + this.GetTitle() + ", " + this.GetAuthor() + ", " + this.GetCheckedin() + ", " + this.GetPriority();
-        return printdata;
-    }
-
-    public Book[] GenArray(List<Book> lst){
+    //Create Array from books
+    public static Book[] GenArray(List<Book> lst){
         Book[] tempArray = new Book[lst.GetSize()];
         lst.First();
         for(int i=0; i<lst.GetSize(); i++){
@@ -174,4 +102,7 @@ class Book{
         }
         return tempArray;
     }
+
 }
+
+
