@@ -39,10 +39,13 @@ public class scifili {
 
         //Create Array
         Book[] bookArray = GenArray(liblist);
-        AlphaSort(bookArray);
 
-        //Spacing
-        //System.out.println("\n\n\n\n\n\nSee Below\n\n\n\n\n\n");
+        //Title Sort test
+        //AlphaSort(bookArray);
+
+        //Author Sort test
+        AuthorSort(bookArray);
+
 
         //Test print array
         for(int j = 0; j <liblist.GetSize(); j ++){
@@ -88,7 +91,24 @@ public class scifili {
         }
     }
 
-    public void AuthorSort(Book[] bookarr){
+    public static void AuthorSort(Book[] bookarr){
+        int j;
+        boolean flag = true;  // will determine when the sort is finished
+        Book temp;
+
+        //algorithm from mathbits.com
+        while (flag) {
+            flag = false;
+            for (j = 0; j < bookarr.length - 1; j++) {
+                if (bookarr[j].GetAuthor().compareToIgnoreCase(bookarr[j + 1].GetAuthor()) > 0) {                                             // ascending sort
+                    temp = bookarr[j];
+                    bookarr[j] = bookarr[j + 1];     // swapping
+                    bookarr[j + 1] = temp;
+                    flag = true;
+                }
+            }
+
+        }
 
     }
 
