@@ -1,0 +1,108 @@
+1984, Orwell, 85, 1
+20,000 Leagues Under The Sea, Verne, 31, 1
+2001: A Space Odyssey, ClarkeA, 84, 1
+Alas Babylon, Frank, 71, 0
+American Gods, Gaiman, 15, 0
+Anathem, Stephenson, 102, 1
+Animal Farm, Orwell, 51, 1
+Belgariad, Eddings, 81, 1
+Book Of The New Sun, Wolfe, 68, 1
+Brave New World, Huxley, 53, 0
+Canticle For Leibowitz, Miller, 8, 0
+Cat's Cradle, Vonnegut, 48, 0
+Caves Of Steel, Asimov, 69, 1
+Childhood's End, ClarkeA, 92, 1
+Chronicles Of Amber, Zelazny, 88, 1
+Chronicles Of Thomas Covenant The Unbeliever, Donaldson, 45, 0
+Clockwork Orange, Burgess, 59, 1
+Codex Alera Series, Butcher, 74, 1
+Conan The Barbarian Series, Howard, 77, 1
+Contact, Sagan, 46, 1
+Cryptonomicon, Stephenson, 108, 1
+Crystal Cave, Stewart, 103, 1
+Culture Series, Banks, 67, 1
+Dark Tower Series, King, 29, 1
+Diamond Age, Stephenson, 76, 1
+Dispossessed, LeGuin, 101, 1
+Do Androids Dream Of Electric Sheep?, Dick, 5, 0
+Doomsday Book, Willis, 70, 1
+Dragonflight, McCaffrey, 83, 1
+Dune Chronicles, Herbert, 27, 1
+Elric Saga, Moorcock, 9, 0
+Ender's Game, Card, 1, 0
+Eyre Affair, Fforde, 22, 0
+Fahrenheit 451, Bradbury, 14, 0
+Farseer Trilogy, Hobb, 43, 1
+Fire Upon The Deep, Vinge, 73, 1
+Flowers For Algernon, Keys, 33, 0
+Forever War, Haldeman, 79, 1
+Foundation Trilogy, Asimov, 13, 0
+Frankenstein, Shelley, 50, 1
+Going Postal, Pratchett, 65, 1
+Handmaid's Tale, Atwood, 57, 1
+Hard-boiled Wonderland and the End of the World, Murakami, 39, 0
+Hitchhiker's Guide To The Galaxy, AdamsD, 1, 0
+Hunger Games Trilogy, Collins, 12, 0
+Hyperion, Simmons, 80, 0
+I Am Legend, Matheson, 66, 1
+I Robot, Asimov, 1, 1
+Illustrated Man, Bradbury, 37, 0
+Inherit The Stars, Hogan, 11, 0
+Jonathan Strange & Mr Norrell, ClarkeS, 44, 1
+Journey To The Center Of The Earth, Verne, 35, 1
+Kingkiller Chronicles, Rothfuss, 87, 1
+Kushiel's Legacy Series, Carey, 100, 1
+Last Unicorn, Beagle, 64, 1
+Left Hand Of Darkness, LeGuin, 89, 1
+Legend Of Drizzt Series, Salvatore, 99, 1
+Lord Of The Rings Trilogy, Tolkien, 2, 0
+Lucifer's Hammer, Niven&Pournelle, 24, 0
+Malazan Book Of The Fallen Series, Erikson, 75, 1
+Mars Trilogy, Robinson, 38, 0
+Martian Chronicles, Bradbury, 49, 0
+Mistborn Series, Sanderson, 91, 1
+Mists Of Avalon, Bradley, 90, 1
+Moon Is A Harsh Mistress, Heinlein, 30, 0
+Mote In God's Eye, Niven&Pournelle, 78, 1
+Neuromancer, Gibson, 86, 1
+Neverwhere, Gaiman, 19, 0
+Old Man's War, Scalzi, 23, 0
+Once And Future King, White, 32, 0
+Outlander Series, Gabaldan, 104, 1
+Pastwatch, Card, 26, 0
+Perdido Street Station, Mieville, 106, 1
+Princess Bride, Goldman, 4, 0
+Ready Player One, Cline, 25, 0
+Rendezvous With Rama, ClarkeA, 42, 1
+Riftwar Saga, Feist, 96, 1
+Ringworld, Niven, 61, 1
+Sandman, Gaiman, 18, 0
+Shannara Trilogy, Brooks, 97, 1
+Silmarillion, Tolkien, 62, 1
+Slaughterhouse-Five, Vonnegut, 16, 0
+Small Gods, Pratchett, 20, 1
+Snow Crash, Stephenson, 82, 1
+Something Wicked This Way Comes, Bradbury, 10, 0
+Song Of Ice And Fire Series, Martin, 54, 1
+Space Trilogy, Lewis, 107, 1
+Sparrow, Russell, 3, 0
+Stardust, Gaiman, 63, 1
+Starship Troopers, Heinlein, 58, 1
+Stranger In A Strange Land, Heinlein, 56, 1
+Sunshine, McKinley, 105, 1
+Sword Of Truth, Goodkind, 94, 1
+The Road, McCarthy, 95, 1
+The Stand, King, 17, 0
+Thrawn Trilogy, Zahn, 41, 1
+Time Machine, Wells, 47, 0
+Time Traveler's Wife, Niffenegger, 21, 0
+Tripods Series, Christopher, 40, 0
+Vorkosigan Saga, Bujold, 93, 1
+War Of The Worlds, Wells, 60, 0
+Watchmen, Moore, 52, 1
+Watership Down, AdamsR, 7, 0
+Way Of Kings, Sanderson, 98, 1
+Wheel Of Time Series, Jordan, 55, 1
+Wicked, Maguire, 36, 0
+World War Z, Brooks, 34, 1
+Xanth Series, Anthony, 72, 1

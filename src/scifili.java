@@ -1,16 +1,28 @@
 //SciFiLi Project CSC220
-//Blake Till >>>> Bryce Ditto
-import java.io.FileNotFoundException;
+//Blake Till and Bryce Ditto\
+//Data structure one: Uses Linked list to dynamically input data
+//Data structure two: Uses Array to quickly sort and search and access data
+//Data structure three: Uses Stack to emulate checking in process of books
+//Data structure four:  Uses priority queue to quickly list out ordered evacuation list
+
+import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileWriter;
 
 public class scifili {
-    public static void main(String args[]) throws FileNotFoundException {
-        //Setup user directory and import booklist
+    public static void main(String args[]) throws IOException {
+        //Setup user directory and import booklist and export booklistout
         File starting = new File(System.getProperty("user.dir"));
         File library = new File(starting, "booklist.txt");
+        FileWriter writeout = new FileWriter("booklistout.txt");
+
         //Init list for importing data
         List<Book> liblist = new List();
+
+        //Init stack for taking in returns
+        Stack<Book> stackret = new Stack();
+
 
         //Init scanners for file and user input
         Scanner libread = new Scanner(library);
@@ -35,26 +47,26 @@ public class scifili {
             liblist.InsertAfter(temp);
         }
 
-        //Test Print for list replace with startup print
-        //System.out.println(liblist);
-
         //Create Array
         Book[] bookArray = GenArray(liblist);
 
-        //Title Sort test
-        //AlphaSort(bookArray);
+        //temp int for search result
+        int result;
 
-        //Author Sort test
-        //AuthorSort(bookArray);
-
-        //Main loop
+        //Main loop for parsing user input and executing desired commands, maybe convert to switch case if time allows
         while(true){
             System.out.println("Welcome to library resource center, please select from the following options:");
-            System.out.println("Sort by Title, Sort by Author, Search by Author, Search by Title, Quit.");
+            System.out.println("Sort by Title, Sort by Author, Search by Author, Search by Title, Return Titles, Quit.");
             input = rawinput.nextLine();
 
             if(input.equalsIgnoreCase("quit")){
                 System.out.println("exiting");
+                AlphaSort(bookArray);
+                //write array to output txt file
+                for(Book book: bookArray){
+                    writeout.write(book.toString() + "\n");
+                }
+                writeout.close();
                 break;
             }else if(input.equalsIgnoreCase("Sort by Author")){
                 AuthorSort(bookArray);
@@ -64,9 +76,75 @@ public class scifili {
                 PrintArray(bookArray);
             }else if(input.equalsIgnoreCase("Search by Author")){
                 System.out.println("Which author would you like to search for?");
+                //user input author
                 input = rawinput.nextLine();
                 AuthorSearch(bookArray, input);
             }else if(input.equalsIgnoreCase("Search by Title")){
+                System.out.println("Which title would you like to search for?");
+                //user input title
+                input = rawinput.nextLine();
+                result = TitleSearch(bookArray, input);
+                if(result != -1){
+                    System.out.println(bookArray[result]);
+                }
+            }else if(input.equalsIgnoreCase("Return Titles")){
+                //Until user enters done, loops to search for titles, if they exist, adds them to the return stack
+                while(input.compareToIgnoreCase("Done") != 0){
+                    System.out.println("Please enter a title to be returned.  Or enter Done.");
+                    input=rawinput.nextLine();
+                    result = TitleSearch(bookArray, input);
+                    if(result != -1){
+                        stackret.Push(bookArray[result]);
+                    }
+                }
+                //pop off the stack(if it is not empty) and check the list to edit checked in status, may be redundant (might can edit object in array)
+                if(stackret.GetSize() != -1){
+                    for(int i = 0; i < stackret.GetSize(); i++){
+                        for(int j = 0; j <liblist.GetSize() ; j++){
+                            liblist.SetPos(j);
+                            if(liblist.GetValue().GetTitle().equalsIgnoreCase(stackret.Peek().GetTitle())){
+                                //set node to checked in
+                                liblist.GetValue().SetCheckedin(1);
+                                stackret.Pop();
+                                //use j to exit for loop early for success
+                                j = liblist.GetSize();
+                            }
+                        }
+                    }
+                    System.out.println("All titles checked in.");
+                }
+                //remake array with updated values, may not be needed (redundant)
+                bookArray = GenArray(liblist);
+            }else if(input.equalsIgnoreCase("Checkout Titles")){
+                //Until user enters done, loops to search for titles, if they exist, adds them to the checkout stack
+                while(input.compareToIgnoreCase("Done") != 0){
+                    System.out.println("Please enter a title to be returned.  Or enter Done.");
+                    input=rawinput.nextLine();
+                    result = TitleSearch(bookArray, input);
+                    if(result != -1){
+                        stackret.Push(bookArray[result]);
+                    }
+                }
+                //pop off the stack(if it is not empty) and check the list to edit checked in status, may be redundant (might can edit object in array)
+                if(stackret.GetSize() != -1){
+                    for(int i = 0; i < stackret.GetSize(); i++){
+                        for(int j = 0; j <liblist.GetSize() ; j++){
+                            liblist.SetPos(j);
+                            if(liblist.GetValue().GetTitle().equalsIgnoreCase(stackret.Peek().GetTitle())){
+                                //set node to checked out
+                                liblist.GetValue().SetCheckedin(0);
+                                stackret.Pop();
+                                //use j to exit for loop early for success
+                                j = liblist.GetSize();
+                            }
+                        }
+                    }
+                    System.out.println("All titles checked out.");
+                }
+                //remake array with updated values, may not be needed (redundant)
+                bookArray = GenArray(liblist);
+
+            }else if(input.equalsIgnoreCase("Evacuation Priority")){
                 System.out.println("To be implemented");
             }else{
                 System.out.println("Please enter one of the listed options");
@@ -75,13 +153,33 @@ public class scifili {
         }
 
     }
-    public static void TitleSearch(Book[] bookarr, String title){
+
+    //Searches array for a user selected title and prints that title
+    public static int TitleSearch(Book[] bookarr, String title){
         int first = 0;
-        int last = bookarr.length;
-        int mid = bookarr.length / 2;
-        
+        int last = bookarr.length - 1;
+        int mid;
+
+        AlphaSort(bookarr);
+
+        while(first <= last){
+            mid = (first + last)/2;
+            int test = bookarr[mid].GetTitle().compareToIgnoreCase(title);
+            if(bookarr[mid].GetTitle().compareToIgnoreCase(title) == 0){
+                System.out.println("Title found.\n");
+                return mid;
+            }else if(bookarr[mid].GetTitle().compareToIgnoreCase(title) > 0){
+                last = mid - 1;
+            }else{
+                first = mid + 1;
+            }
+        }
+        System.out.println("Title not found.");
+        return -1;
+
     }
 
+    //Creates a LL of books by the user selected author then prints that list
     public static void AuthorSearch(Book[] bookarr, String author){
         List<Book> temp = new List();
         for (Book book : bookarr) {
@@ -93,10 +191,12 @@ public class scifili {
         if(temp.GetSize() == -1){
             System.out.println("Author not found.");
         }else{
+            System.out.println("Author found.  See titles below.");
             System.out.println(temp);
         }
     }
 
+    //Sorts books alphabetically by title
     public static void AlphaSort(Book[] bookarr) {
         int j;
         boolean flag = true;  // will determine when the sort is finished
@@ -117,6 +217,7 @@ public class scifili {
         }
     }
 
+    //Sorts books alphabetically by author
     public static void AuthorSort(Book[] bookarr){
         int j;
         boolean flag = true;  // will determine when the sort is finished
