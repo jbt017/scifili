@@ -1,4 +1,5 @@
 //SciFiLi Project CSC220
+//Blake Till >>>> Bryce Ditto
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
@@ -35,7 +36,7 @@ public class scifili {
         }
 
         //Test Print for list replace with startup print
-        System.out.println(liblist);
+        //System.out.println(liblist);
 
         //Create Array
         Book[] bookArray = GenArray(liblist);
@@ -44,22 +45,25 @@ public class scifili {
         //AlphaSort(bookArray);
 
         //Author Sort test
-        AuthorSort(bookArray);
-
-
-        //Test print array
-        for(int j = 0; j <liblist.GetSize(); j ++){
-            System.out.println(bookArray[j]);
-        }
+        //AuthorSort(bookArray);
 
         //Main loop
         while(true){
-            System.out.println("Welcome to library resource center, please select from the following options: quit");
+            System.out.println("Welcome to library resource center, please select from the following options:");
+            System.out.println("Sort by Title, Sort by Author, Quit.");
             input = rawinput.nextLine();
 
             if(input.equalsIgnoreCase("quit")){
                 System.out.println("exiting");
                 break;
+            }else if(input.equalsIgnoreCase("Sort by Author")){
+                AuthorSort(bookArray);
+                PrintArray(bookArray);
+            }else if(input.equalsIgnoreCase("Sort by Title")){
+                AlphaSort(bookArray);
+                PrintArray(bookArray);
+            }else{
+                System.out.println("Please enter one of the listed options");
             }
 
         }
@@ -121,6 +125,12 @@ public class scifili {
             lst.Next();
         }
         return tempArray;
+    }
+
+    public static void PrintArray(Book[] arr){
+        for(int j = 0; j <arr.length; j ++){
+            System.out.println(arr[j]);
+        }
     }
 
 }
