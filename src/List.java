@@ -102,11 +102,13 @@ public class List<Type>
     // navigates to the next element
     // this should not be possible for an empty list
     // there should be no wrap-around
-    public void Next()
+    public int Next()
     {
         if(curr.getLink()  != null && curr.getLink().getLink() != null){
             curr.setLink(curr.getLink().getLink());
+            return 1;
         }
+        return -1;
     }
 
     // returns the location of the current element (or -1)

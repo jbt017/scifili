@@ -65,4 +65,20 @@ class Book{
         printdata = printdata + this.GetTitle() + ", " + this.GetAuthor() + ", " + this.GetCheckedin() + ", " + this.GetPriority();
         return printdata;
     }
+
+    public int ComparePriority(Book book1, Book book2){
+        if(book1.GetPriority() > book2.GetPriority()){
+            return 1;
+        }else if(book1.GetPriority() < book2.GetPriority() ){
+            return -1;
+        }else{
+            return 0;
+        }
+    }
+
+    public int compareTo(Book b){
+        if(this.GetPriority() > b.GetPriority()) return 1;
+        if(this.GetPriority() < b.GetPriority()) return -1;
+        else                                     return 0;
+        }
 }

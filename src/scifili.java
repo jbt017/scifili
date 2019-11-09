@@ -23,6 +23,9 @@ public class scifili {
         //Init stack for taking in returns
         Stack<Book> stackret = new Stack();
 
+        //Init priority queue
+        Priority<Book> evacq = new Priority();
+
 
         //Init scanners for file and user input
         Scanner libread = new Scanner(library);
@@ -41,11 +44,18 @@ public class scifili {
             String[] tokens = line.split(", ");
             title = tokens[0];
             author = tokens[1];
-            priority = Integer.parseInt(tokens[2]);
-            check = Integer.parseInt(tokens[3]);
+            check = Integer.parseInt(tokens[2]);
+            priority = Integer.parseInt(tokens[3]);
             Book temp = new Book(author, title, priority, check);
             liblist.InsertAfter(temp);
         }
+
+        //fill priority queue
+        for(int i=0; i < liblist.GetSize(); i++){
+            liblist.SetPos(i);
+            evacq.Insert(liblist.GetValue());
+        }
+
 
         //Create Array
         Book[] bookArray = GenArray(liblist);
@@ -56,7 +66,7 @@ public class scifili {
         //Main loop for parsing user input and executing desired commands, maybe convert to switch case if time allows
         while(true){
             System.out.println("Welcome to library resource center, please select from the following options:");
-            System.out.println("Sort by Title, Sort by Author, Search by Author, Search by Title, Return Titles, Quit.");
+            System.out.println("Sort by Title, Sort by Author, Search by Author, Search by Title, Return Titles, Evacuation Priority, Quit.");
             input = rawinput.nextLine();
 
             if(input.equalsIgnoreCase("quit")){
@@ -145,7 +155,7 @@ public class scifili {
                 bookArray = GenArray(liblist);
 
             }else if(input.equalsIgnoreCase("Evacuation Priority")){
-                System.out.println("To be implemented");
+                System.out.println(evacq);
             }else{
                 System.out.println("Please enter one of the listed options");
             }
